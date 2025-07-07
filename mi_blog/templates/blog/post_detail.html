@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-3"> {# Contenido principal del post #}
+        <article class="card mb-8">
+            {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-96 object-cover rounded-t-xl mb-6 shadow-md">
+            {% endif %}
+            <div class="p-6">
+                <h1 class="text-4xl font-extrabold text-blue-600 dark:text-blue-300 mb-4 leading-tight">{{ post.title }}</h1>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 flex items-center space-x-3">
+                    <span>Publicado por <span class="font-medium text-blue-500 dark:text-blue-500">{{ post.author.username }}</span></span>
+                    <span>•</span>
+                    <span>{{ post.publish|date:"d M Y" }}</span>
+                    {% if post.category %}
+                        <span>•</span>
+                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 text-xs font-semibold rounded-full">{{ post.category.name }}</span>
+                    {% endif %}
+                </p>
+                <div class="prose max-w-none text-gray-500 dark:text-white-500 leading-relaxed text-lg mb-8">
+                    {{ post.content|safe }}
+                </div>
+                {% if user.is_authenticated and user.is_superuser or user.is_authenticated and user.profile.is_editor and user == post.author %}
+                    <div class="flex space-x-4 mt-6">
+                        <a href="{% url 'blog:post_edit' post.publish.year post.publish|date:"m" post.publish|date:"d" post.slug %}" class="btn-primary">Editar Post</a>
+                        <a href="{% url 'blog:post_delete' post.publish.year post.publish|date:"m" post.publish|date:"d" post.slug %}" class="btn-danger">Eliminar Post</a>
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+
+        <div class="card" id="comments" style="padding:1.5rem;">
+            <h2 class="text-2xl font-semibold text-gray-500 dark:text-white-500 mb-4">Comentarios ({{ comments.count }})</h2>
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="border-b border-blue-200 dark:border-gray-700 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                        <p class="font-semibold text-blue-400 dark:text-gray-300">{{ comment.author.username }} <span class="text-gray-500 dark:text-gray-400 text-sm ml-2"><span>•</span>{{ comment.created|date:" d M Y, H:i " }}<span>•</span></span></p>
+                        <p class="text-purple-500 dark:text-gray-500 mt-1">{{ comment.content|linebreaksbr }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-gray-600 dark:text-gray-400">Sé el primero en comentar este post.</p>
+            {% endif %}
+
+            <h3 class="text-xl font-semibold text-gray-500 dark:text-gray-200 mt-8 mb-4">Añadir un Comentario</h3>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'blog:post_comment' post.publish.year post.publish|date:"m" post.publish|date:"d" post.slug %}">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        {{ comment_form.content|add_class:"form-input" }}
+                        {% for error in comment_form.content.errors %}
+                            <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn-primary">Publicar Comentario</button>
+                </form>
+            {% else %}
+                <p class="text-gray-600 dark:text-gray-400">Debes <a href="{% url 'login' %}" class="text-blue-600 dark:text-blue-500 hover:underline">iniciar sesión</a> para comentar.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <aside class="lg:col-span-1"> {# Barra lateral para búsqueda/filtro #}
+        <div class="card p-6">
+            <h2 class="text-2xl font-semibold text-gray-500 dark:text-gray-500 mb-4">Buscar y Filtrar</h2>
+            <form method="get" action="{% url 'blog:post_list' %}" class="space-y-4">
+                <div>
+                    <label for="id_query" class="block text-gray-400 dark:text-gray-400 text-sm font-bold mb-2">Buscar:</label>
+                    {{ filter_form.query|add_class:"form-input"|attr:"placeholder:Título, contenido o autor" }}
+                </div>
+                <div>
+                    <label for="id_category" class="block text-gray-400 dark:text-gray-300 text-sm font-bold mb-2">Categoría:</label>
+                    {{ filter_form.category|add_class:"form-input" }}
+                </div>
+                <div>
+                    <label for="id_start_date" class="block text-gray-400 dark:text-gray-300 text-sm font-bold mb-2">Fecha Desde:</label>
+                    {{ filter_form.start_date|add_class:"form-input" }}
+                </div>
+                <div>
+                    <label for="id_end_date" class="block text-gray-400 dark:text-gray-300 text-sm font-bold mb-2">Fecha Hasta:</label>
+                    {{ filter_form.end_date|add_class:"form-input" }}
+                </div>
+                <div>
+                    <label for="id_min_comments" class="block text-gray-400 dark:text-gray-300 text-sm font-bold mb-2">Mín. Comentarios:</label>
+                    {{ filter_form.min_comments|add_class:"form-input"|attr:"placeholder:Cantidad de comentarios"  }}
+                </div>
+                <div class="flex flex-col space-y-2 mt-4">
+                    <button type="submit" class="btn-primary">Aplicar Filtros</button>
+                    <a href="{% url 'blog:post_list' %}" class="btn-secondary text-center">Ver Todos</a>
+                </div>
+                {% for error in filter_form.non_field_errors %}
+                    <p class="text-red-500 text-xs italic mt-1 text-center">{{ error }}</p>
+                {% endfor %}
+            </form>
+        </div>
+    </aside>
+</div>
+{% endblock %}
