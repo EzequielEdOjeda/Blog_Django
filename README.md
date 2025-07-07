@@ -88,7 +88,7 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ## 👤 *Desarrollador del Proyecto*
 
-* **EzequielEdOjeda** / [Ver Más Proyectos](https://github.com/EzequielEdOjeda)
+* **EzequielEdOjeda** - [🔗 Ver más proyectos en mi  GitHub](https://github.com/EzequielEdOjeda)
 
 ---
 
