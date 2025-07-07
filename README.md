@@ -28,7 +28,7 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 1.  **Clonar el repositorio o extraer el ZIP/RAR:**
     ```bash
-    git clone https://github.com/EzequielEdOjeda/Blog_Informatorio.git
+    git clone https://github.com/EzequielEdOjeda/Blog_Django.git
     ```
     (O simplemente extrae el contenido del archivo comprimido en una carpeta)
 
@@ -88,7 +88,7 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ## 👤 Autor
 
-* **EzequielEdOjeda** - *Desarrollador del proyecto* - [Perfil de GitHub](https://github.com/EzequielEdOjeda)
+* **EzequielEdOjeda** - *Desarrollador del Proyecto* - [Más Proyectos](https://github.com/EzequielEdOjeda)
 
 ---
 
