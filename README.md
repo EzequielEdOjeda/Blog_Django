@@ -96,7 +96,7 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     pip install mysqlclient
     ```
 
-3. Edita el archivo `wsgi.py`:
+3. Edita el archivo `wsgi.py` en la sección **Code: WSGI configuration file**:
     ```python
     import os
     import sys
@@ -121,6 +121,39 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
 
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
+
+---
+
+### Configuración en PythonAnywhere
+
+Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
+
+#### 🔧 Sección **Code**:
+- **Source code**:  
+  `/home/NOMBREGITHUB/Blog_Django/mi_blog`
+
+- **Working directory**:  
+  `/home/NOMBREGITHUB/`
+
+#### 📦 Sección **Virtualenv**:
+-  
+  `/home/NOMBREGITHUB/.virtualenvs/venv`
+
+#### 🗂️ Sección **Static files**:
+
+| URL       | Directory                                               |
+|-----------|---------------------------------------------------------|
+| `/static/` | `/home/NOMBREGITHUB/Blog_Django/mi_blog/static`         |
+| `/media/`  | `/home/NOMBREGITHUB/Blog_Django/mi_blog/media`          |
+
+#### 🔐 Sección **Security**:
+- **Force HTTPS**: Activa esta opción (Enabled)
+
+#### 🛢️ Sección **Databases**:
+- Crea una base de datos MySQL y asigna una contraseña segura.
+
+#### 🔁 Sección **Reload**:
+- Presiona el **botón verde de recarga** para aplicar los cambios y listo.
 
 ---
 
