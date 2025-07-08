@@ -3,6 +3,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import Group # Importar Group para asignar roles
 from django.contrib.auth.views import LoginView # Importar la vista de login base de Django
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetView
+
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'password_reset_form.html'
 
 # Vista para el registro de nuevos usuarios
 def register(request):
