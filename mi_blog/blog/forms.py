@@ -33,6 +33,7 @@ class PostForm(forms.ModelForm):
         }
         widgets = {
             'content': forms.Textarea(attrs={'rows': 10}),
+            'featured_image': forms.FileInput(attrs={'class': 'w-full'}),
         }
 
     def __init__(self, *args, **kwargs):
