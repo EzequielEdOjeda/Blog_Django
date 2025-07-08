@@ -301,6 +301,8 @@
         /* Estilos para los enlaces/botones dentro del menú móvil (Inicio, Blog, Iniciar Sesión, Registrarse) */
         #mobile-menu nav a,
         #mobile-menu div a {
+		    padding: 0.5rem 0.7rem;
+            border-radius: 0.375rem; /* bordes redondeados */
             display: block; /* Para que cada enlace ocupe su propia línea y se pueda aplicar padding */
             margin: 0.5rem auto; /* Centrar horizontalmente y añadir espacio vertical entre ellos */
             text-align: center; /* Centrar el texto */
@@ -335,7 +337,8 @@
 
         html.dark #mobile-menu nav a,
         html.dark #mobile-menu div a {
-            background-color: rgba(0, 0, 0, 0.2); /* Fondo más sutil en modo oscuro */
+		    padding: 0.5rem 0.7rem;
+            border-radius: 0.375rem; /* bordes redondeados */
             color: #e2e8f0; /* Texto claro en modo oscuro */
             border-color: rgba(255, 255, 255, 0.1);
         }
