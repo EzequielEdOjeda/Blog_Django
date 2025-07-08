@@ -34,8 +34,8 @@ class PostListView(ListView):
             if end_date:
                 queryset = queryset.filter(publish__lte=end_date)
             if min_comments is not None:
-                # Filtrar posts con al menos N comentarios aprobados
-                queryset = queryset.annotate(comment_count=models.Count('comments', filter=models.Q(comments__active=True))).filter(comment_count__gte=min_comments)
+               # Filtrar posts con al menos N comentarios aprobados
+                queryset = queryset.annotate(comment_count=Count('comments', filter=Q(comments__active=True))).filter(comment_count__gte=min_comments)
             if query:
                 queryset = queryset.filter(
                     Q(title__icontains=query) |
