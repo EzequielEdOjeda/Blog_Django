@@ -17,16 +17,13 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ## 📷 Capturas de pantalla
 
-![Visitando](Captura1.png)
-<br></br>
-![Logeado](Captura2.png)
-<br></br>
-![Blog](Captura3.png)
-<br></br>
+![Visitando](Capturas/Captura1.png)  
+![Logeado](Capturas/Captura2.png)  
+![Blog](Capturas/Captura3.png)  
 
 ---
 
-## ⚙️ Configuración y Ejecución:
+## ⚙️ Configuración y Ejecución Manual:
 
 1.  **Clonar el repositorio o extraer el ZIP/RAR:**
     ```bash
@@ -43,8 +40,9 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
     * **Windows:** `entorno\Scripts\activate`
     * **macOS/Linux:** `source entorno/bin/activate`
 
-4.  **Instalar dependencias dentro de mi_blog:**
+4.  **Instalar dependencias dentro de `mi_blog`:**
     ```bash
+    cd Blog_Django/mi_blog
     pip install -r requirements.txt
     ```
 
@@ -70,6 +68,62 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ---
 
+## 🖥️ Instalación rápida en PC
+
+Si estás en Windows, puedes usar los archivos incluidos:
+
+1. Ejecuta `Instalación.bat` para instalar los requisitos automáticamente.
+2. Luego ejecuta `RunServer.bat` para iniciar el servidor.
+3. Accede desde tu navegador a: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+---
+
+## ☁️ Despliegue en PythonAnywhere
+
+Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/) siguiendo estos pasos desde su consola Bash:
+
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/EzequielEdOjeda/Blog_Django.git
+    cd Blog_Django
+    ```
+
+2. Crea el entorno virtual:
+    ```bash
+    mkvirtualenv --python=/usr/bin/python3.10 venv
+    cd mi_blog
+    pip install -r requirements.txt
+    pip install mysqlclient
+    ```
+
+3. Edita el archivo `wsgi.py`:
+    ```python
+    import os
+    import sys
+
+    path = os.path.expanduser('/home/NOMBREGITHUB/Blog_Django/mi_blog')
+    if path not in sys.path:
+        sys.path.insert(0, path)
+
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'mi_blog.settings'
+
+    from django.core.wsgi import get_wsgi_application
+    from django.contrib.staticfiles.handlers import StaticFilesHandler
+
+    application = StaticFilesHandler(get_wsgi_application())
+    ```
+
+4. Configura en `settings.py`:
+    ```python
+    DEBUG = False
+    ALLOWED_HOSTS = ['NOMBREGITHUB.pythonanywhere.com']
+    ```
+
+> También puedes consultar este video guía:  
+> 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
+
+---
+
 ## 📁 Roles y Permisos:
 
 * **Admin:** Puede crear, editar, eliminar posts y usuarios, asignar roles.
@@ -78,12 +132,12 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ---
 
-## 🚀  Tecnologías Utilizadas
+## 🚀 Tecnologías Utilizadas
 
-* **Backend:** Python, Django
-* **Base de Datos:** SQLite 3 
-* **Frontend:** HTML5, CSS3, Tailwind CSS
-* **Gestión de Dependencias:** Pip, `requirements.txt`
+* **Backend:** Python, Django  
+* **Base de Datos:** SQLite 3  
+* **Frontend:** HTML5, CSS3, Tailwind CSS  
+* **Gestión de Dependencias:** Pip, `requirements.txt`  
 * **Control de Versiones:** Git, GitHub
 
 ---
@@ -94,4 +148,4 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ---
 
-## No olvides darle ⭐ a este repositorio si te gustó.
+## ⭐ ¡No olvides darle una estrella si te gustó este proyecto!
