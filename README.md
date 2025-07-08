@@ -122,7 +122,7 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
 
-### Configuración en PythonAnywhere
+### Configuración Manual en PythonAnywhere
 
 Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 
