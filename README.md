@@ -96,7 +96,7 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     pip install mysqlclient
     ```
 
-3. Edita el archivo `wsgi.py` en la sección **Code: WSGI configuration file**:
+3. Edita el archivo `wsgi.py` en la sección **Code:** WSGI configuration file:
     ```python
     import os
     import sys
@@ -121,8 +121,6 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
 
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
-
----
 
 ### Configuración en PythonAnywhere
 
