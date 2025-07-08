@@ -18,23 +18,23 @@ class PostListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        self.form = PostFilterForm(self.request.GET)
+        self.form = PostFilterForm(self.request.GET) # Asegúrate de que self.form siempre se define aquí
 
         if self.form.is_valid():
-            category_slug = self.form.cleaned_data.get('category')
+            category_obj = self.form.cleaned_data.get('category') # Renombrado para claridad
             start_date = self.form.cleaned_data.get('start_date')
             end_date = self.form.cleaned_data.get('end_date')
             min_comments = self.form.cleaned_data.get('min_comments')
-            query = self.form.cleaned_data.get('query') # Para la búsqueda
+            query = self.form.cleaned_data.get('query')
 
-            if category_slug:
-                queryset = queryset.filter(category__slug=category_slug)
+            if category_obj: # Usa el objeto Category para filtrar
+                queryset = queryset.filter(category=category_obj)
             if start_date:
                 queryset = queryset.filter(publish__gte=start_date)
             if end_date:
                 queryset = queryset.filter(publish__lte=end_date)
             if min_comments is not None:
-               # Filtrar posts con al menos N comentarios aprobados
+                from django.db.models import Count
                 queryset = queryset.annotate(comment_count=Count('comments', filter=Q(comments__active=True))).filter(comment_count__gte=min_comments)
             if query:
                 queryset = queryset.filter(
@@ -43,14 +43,17 @@ class PostListView(ListView):
                     Q(author__username__icontains=query)
                 )
 
-        return queryset.order_by('-publish') # Ordenar por fecha de publicación descendente
+        return queryset.order_by('-publish')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = self.form
-        context['categories'] = Category.objects.all()
-        # Pasar los valores seleccionados del filtro para mantenerlos en el formulario
-        context['selected_category'] = self.request.GET.get('category', '')
+        context['form'] = self.form # El formulario ya está inicializado en get_queryset
+
+        # Pasa el objeto Category seleccionado, o None si no hay
+        selected_category_obj = self.form.cleaned_data.get('category') if self.form.is_valid() else None
+        context['selected_category'] = selected_category_obj.pk if selected_category_obj else '' # Pasa el PK o un string vacío
+
+        # Estos están bien, ya que vienen como strings del GET
         context['start_date'] = self.request.GET.get('start_date', '')
         context['end_date'] = self.request.GET.get('end_date', '')
         context['min_comments'] = self.request.GET.get('min_comments', '')
