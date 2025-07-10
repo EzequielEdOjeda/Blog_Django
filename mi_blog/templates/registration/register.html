@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+    <div class="max-w-md w-full space-y-8 p-10 rounded-xl shadow-lg transition-colors duration-300 card">
+        <div>
+            <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 dark:text-white">
+                Crear una Cuenta
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+                O <a href="{% url 'login' %}" class="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">inicia sesión si ya tienes una...</a>
+            </p>
+        </div>
+        <form class="mt-8 space-y-6" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-4">
+            <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
+            {% render_field field class="w-full form-input" placeholder=field.label %}
+
+            {# Insertar el mensaje solo cuando se llega al campo de contraseña #}
+            {% if field.name == "password1" %}
+            <div class="bg-slate-50 dark:bg-slate-800/30 rounded-lg p-3 text-xs text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50 mt-2">
+                <div class="flex items-start space-x-2">
+                    <i data-feather="info" class="w-4 h-4 mt-0.5 text-indigo-500"></i>
+                    <div class="space-y-1">
+                        <p class="font-medium">Tu contraseña debe contener:</p>
+                        <ul class="space-y-1 text-xs">
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1 h-1 bg-slate-400 rounded-full"></span>
+                                <span>Al menos 8 caracteres</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1 h-1 bg-slate-400 rounded-full"></span>
+                                <span>No puede ser muy común</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <span class="w-1 h-1 bg-slate-400 rounded-full"></span>
+                                <span>No puede ser solo números</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% for error in field.errors %}
+                <p class="text-red-500 text-xs italic mt-1">{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+        <div class="text-red-500 text-sm text-center -mt-4 mb-4">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <button type="submit" class="btn-primary w-full py-3 text-lg mt-6">
+        Registrarse
+    </button>
+</form>
+
+    </div>
+</div>
+{% endblock %}

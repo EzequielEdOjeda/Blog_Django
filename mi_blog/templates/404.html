@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Página No Encontrada (404){% endblock %}
+
+{% block content %}
+<div class="text-center py-20">
+    <h1 class="text-6xl font-extrabold text-red-600 dark:text-red-400 mb-6 animate-fade-in">404</h1>
+    <h2 class="text-4xl font-bold text-color-heading mb-4 animate-fade-in-delay">¡Oops! Página No Encontrada</h2>
+    <p class="text-lg text-color-text-secondary mb-8">
+        Lo sentimos, la página que buscas no existe o ha sido movida.
+    </p><br>
+    <a href="{% url 'home' %}" class="btn btn-primary">Volver a Inicio</a>
+</div>
+
+<style>
+    /* Animaciones básicas para la página 404 */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+    }
+    .animate-fade-in-delay {
+        animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+</style>
+{% endblock %}
