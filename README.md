@@ -17,9 +17,8 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ## 📷 Capturas de pantalla
 
-![Visitando](Capturas/Captura1.png)  
-![Logeado](Capturas/Captura2.png)  
-![Blog](Capturas/Captura3.png)  
+![Visitando](Capturas/Capture1.png)  
+![Logeado](Capturas/Capture2.png) 
 
 ---
 
