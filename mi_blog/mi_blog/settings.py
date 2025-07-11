@@ -149,22 +149,48 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
 JAZZMIN_SETTINGS = {
+    # Títulos e Iconos
     "site_title": "Mi Admin",
     "site_header": "Mi Blog",
-    "topmenu_links": [
-        {"name": "Ver Sitio Web",  "url": "/"},
-        {"name": "Mi GitHub", "url": "https://github.com/EzequielEdOjeda/Blog_Django", "new_window": True},
-    ],
     "search_model": "auth.User",
     "site_brand": "Mi Blog",
-    "welcome_sign": "Bienvenido al Panel de Administración",
+    "welcome_sign": "Bienvenido a Mi Blog",
     "copyright": "Mi Blog Ltd.",
+
+    # --- Menú Superior ---
+    "topmenu_links": [
+        # Ver Sitio
+        {"name": "Ver Sitio", "url": "/", "new_window": True},
+
+        # Enlace externo
+        {"name": "Mi GitHub", "url": "https://github.com/EzequielEdOjeda/Blog_Django", "new_window": True},
+    ],
+
+    # --- Menú de Usuario ---
+    "usermenu_links": [
+        {"name": "Ver Sitio Web", "url": "/", "new_window": True},
+    ],
+
+    # --- Menú Lateral ---
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["auth", "posts", "accounts"],
     "icons": {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
-        "blog.Post": "fas fa-blog",
-        "blog.Categoria": "fas fa-folder-open",
-        "blog.Comentario": "fas fa-comments",
+        "posts.Post": "fas fa-blog",
+        "posts.Comment": "fas fa-comments",
+        "accounts.Profile": "fas fa-id-card",
     },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+
+    # --- UI Customizer (Selector de Temas) ---
+    "show_ui_builder": False, 
+    "changeform_format": "horizontal_tabs",
+    "related_modal_active": True,
 }
+
