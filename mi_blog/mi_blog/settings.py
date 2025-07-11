@@ -151,6 +151,11 @@ DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 JAZZMIN_SETTINGS = {
     "site_title": "Mi Admin",
     "site_header": "Mi Blog",
+    "topmenu_links": [
+        {"name": "Ver Sitio Web",  "url": "/"},
+        {"name": "Mi GitHub", "url": "https://github.com/EzequielEdOjeda/Blog_Django", "new_window": True},
+    ],
+    "search_model": "auth.User",
     "site_brand": "Mi Blog",
     "welcome_sign": "Bienvenido al Panel de Administración",
     "copyright": "Mi Blog Ltd.",
