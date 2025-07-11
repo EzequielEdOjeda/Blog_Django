@@ -169,7 +169,10 @@ Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 * **Frontend:** HTML5, CSS3, Tailwind CSS  
 * **Gestión de Dependencias:** Pip, `requirements.txt`  
 * **Control de Versiones:** Git, GitHub
-* ### Librerías y Herramientas:
+
+---
+
+## 📚 Librerías y Herramientas:
 
 - [`django-jazzmin`](https://github.com/farridav/django-jazzmin): Tema moderno para el panel de administración de Django.
 - [`django-widget-tweaks`](https://github.com/jazzband/django-widget-tweaks): Permite personalizar widgets de formularios directamente en las plantillas.
