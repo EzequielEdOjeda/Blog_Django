@@ -170,6 +170,15 @@ Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 * **Gestión de Dependencias:** Pip, `requirements.txt`  
 * **Control de Versiones:** Git, GitHub
 
+## 📚 Librerías y Herramientas
+
+- [`django-jazzmin`](https://github.com/farridav/django-jazzmin): Tema moderno para el panel de administración de Django.
+- [`django-widget-tweaks`](https://github.com/jazzband/django-widget-tweaks): Permite personalizar widgets de formularios directamente en las plantillas.
+- [`pillow`](https://python-pillow.org/): Biblioteca para el procesamiento de imágenes (requerida por `ImageField` en Django).
+- [`sqlparse`](https://github.com/andialbrecht/sqlparse): Analizador de SQL usado internamente por Django.
+- [`asgiref`](https://github.com/django/asgiref): Interfaz ASGI usada por Django para soporte asincrónico.
+- [`tzdata`](https://pypi.org/project/tzdata/): Base de datos de zonas horarias, usada por Django en sistemas sin zona horaria del sistema.
+
 ---
 
 ## 👤 *Desarrollador del Proyecto*
