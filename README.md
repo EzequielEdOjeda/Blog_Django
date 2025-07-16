@@ -92,7 +92,6 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     mkvirtualenv --python=/usr/bin/python3.10 venv
     cd mi_blog
     pip install -r requirements.txt
-    pip install mysqlclient
     ```
 
 3. Edita el archivo `wsgi.py` en la sección **Code:** WSGI configuration file:
@@ -117,6 +116,8 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     DEBUG = False
     ALLOWED_HOSTS = ['NOMBREGITHUB.pythonanywhere.com']
     ```
+	
+5. Configura el archivo .env con tus datos MySQL del sitio:
 
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
@@ -169,17 +170,6 @@ Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 * **Frontend:** HTML5, CSS3, Tailwind CSS  
 * **Gestión de Dependencias:** Pip, `requirements.txt`  
 * **Control de Versiones:** Git, GitHub
-
----
-
-## 📚 Librerías y Herramientas:
-
-- [`django-jazzmin`](https://github.com/farridav/django-jazzmin): Tema moderno para el panel de administración de Django.
-- [`django-widget-tweaks`](https://github.com/jazzband/django-widget-tweaks): Permite personalizar widgets de formularios directamente en las plantillas.
-- [`pillow`](https://python-pillow.org/): Biblioteca para el procesamiento de imágenes (requerida por `ImageField` en Django).
-- [`sqlparse`](https://github.com/andialbrecht/sqlparse): Analizador de SQL usado internamente por Django.
-- [`asgiref`](https://github.com/django/asgiref): Interfaz ASGI usada por Django para soporte asincrónico.
-- [`tzdata`](https://pypi.org/project/tzdata/): Base de datos de zonas horarias, usada por Django en sistemas sin zona horaria del sistema.
 
 ---
 
