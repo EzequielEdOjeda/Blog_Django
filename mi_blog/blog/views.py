@@ -9,6 +9,22 @@ from django.db.models import Q, Count # Asegúrate de añadir 'Count' aquí
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from .models import Comment, Post # Asumiendo que tus modelos se llaman Comment y Post
+
+@login_required
+def comment_delete(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    # Asegúrate de que solo el autor del comentario o un superusuario/editor pueda eliminar
+    if request.user == comment.author or request.user.is_superuser or (hasattr(request.user, 'profile') and request.user.profile.is_editor and request.user == comment.post.author):
+        post_slug = comment.post.slug
+        publish_date = comment.post.publish
+        comment.delete()
+        # Redirigir de nuevo a la página de detalles del post
+        return redirect('blog:post_detail', year=publish_date.year, month=publish_date.month, day=publish_date.day, slug=post_slug)
+    else:
+        # Manejar el intento de eliminación no autorizado (por ejemplo, redirigir con un mensaje de error)
+        return redirect('blog:post_detail', year=comment.post.publish.year, month=comment.post.publish.month, day=comment.post.publish.day, slug=comment.post.slug)
 
 class PostListView(ListView):
     queryset = Post.published.all()
