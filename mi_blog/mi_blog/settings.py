@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
+from dotenv import load_dotenv # Asegúrate de tener esto para cargar el .env
+
+load_dotenv() # Carga las variables del archivo .env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,13 +86,19 @@ WSGI_APPLICATION = 'mi_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+NAME_DB = os.getenv("NAME_DB")
+USER_DB = os.getenv("USER_DB")
+PASSWORD_DB = os.getenv("PASSWORD_DB") # Esta es la variable que guarda la contraseña de tu .env
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': NAME_DB,
+        'USER': USER_DB,
+        'PASSWORD': PASSWORD_DB, # <-- ¡AQUÍ ESTÁ EL CAMBIO! Debe ser 'PASSWORD'
+        'PORT': "3306",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -160,7 +168,7 @@ JAZZMIN_SETTINGS = {
     # --- Menú Superior ---
     "topmenu_links": [
         # Ver Sitio
-        {"name": "Ver Sitio", "url": "/", "new_window": True},
+        {"name": "Ver Sitio", "url": "/", "new_window": False},
 
         # Enlace externo
         {"name": "Mi GitHub", "url": "https://github.com/EzequielEdOjeda/Blog_Django", "new_window": True},
@@ -168,7 +176,7 @@ JAZZMIN_SETTINGS = {
 
     # --- Menú de Usuario ---
     "usermenu_links": [
-        {"name": "Ver Sitio Web", "url": "/", "new_window": True},
+        {"name": "Ver Sitio Web", "url": "/", "new_window": False},
     ],
 
     # --- Menú Lateral ---
