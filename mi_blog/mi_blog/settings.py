@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': NAME_DB,
         'USER': USER_DB,
-        'PASSWORD': PASSWORD_DB, # <-- ¡AQUÍ ESTÁ EL CAMBIO! Debe ser 'PASSWORD'
+        'PASSWORD': PASSWORD_DB, 
         'PORT': "3306",
     }
 }
