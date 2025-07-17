@@ -112,7 +112,10 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     application = StaticFilesHandler(get_wsgi_application())
     ```
     
-4. Crea una Base de Datos MySQL y crea tu tabla para renombrar en NAME_DB.
+4. Crea una Base de Datos MySQL y tu tabla para renombrar en NAME_DB.
+
+> ¡IMPORTANTE!
+> Poner DEBUG = False, ya que el modo debug revela información detallada.
 
 5. Configura en `settings.py` con tus datos:
     ```python
@@ -163,10 +166,10 @@ Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 #### 🔐 Sección **Security**:
 - **Force HTTPS**: Activa esta opción (Enabled)
 
-### 🔁 Sección **Recargar**:
+#### 🔁 Sección **Recargar**:
 - Haz clic en el **botón verde de recarga** para aplicar tus cambios.
 
-### 🗂️ Gestión del **Panel de Administración**:
+#### 🔧 Gestión del **Panel de Administración**:
 - Crea tu grupo "Editors" para asignar editores. Por defecto, ya está disponible un grupo de "Comentaristas".
 
 ---
