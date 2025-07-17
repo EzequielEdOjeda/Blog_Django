@@ -45,24 +45,26 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
     cd Blog_Django/mi_blog
     pip install -r requirements.txt
     ```
-
-5.  **Aplicar migraciones de la base de datos:**
+    
+5.  **Crea una Base de Datos MySQL para asignar tus datos en `settings.py`.**
+      
+6.  **Aplicar migraciones de la base de datos:**
     ```bash
     python manage.py makemigrations && python manage.py migrate
     ```
 
-6.  **Crear un superusuario (administrador):**
+7.  **Crear un superusuario (administrador):**
     ```bash
     python manage.py createsuperuser
     ```
     Sigue las instrucciones para crear un usuario administrador.
 
-7.  **Ejecutar el servidor de desarrollo:**
+8.  **Ejecutar el servidor de desarrollo:**
     ```bash
     python manage.py runserver
     ```
 
-8.  **Acceder al Blog:**
+9.  **Acceder al Blog:**
     * Abre tu navegador y ve a `http://127.0.0.1:8000/`.
     * Panel de Administración: `http://127.0.0.1:8000/admin/` (usa las credenciales del superusuario).
 
@@ -72,9 +74,10 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 Si estás en Windows, puedes usar los archivos incluidos:
 
-1. Ejecuta `Instalación.bat` para instalar los requisitos automáticamente.
-2. Luego ejecuta `RunServer.bat` para iniciar el servidor.
-3. Accede desde tu navegador a: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+1. Crea una Base de Datos MySQL para asignar tus datos en `settings.py`.
+2. Ejecuta `Instalación.bat` para instalar los requisitos automáticamente.
+3. Luego ejecuta `RunServer.bat` para iniciar el servidor.
+4. Accede desde tu navegador a: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ---
 
@@ -112,7 +115,7 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     application = StaticFilesHandler(get_wsgi_application())
     ```
     
-4. Crea una Base de Datos MySQL y tu tabla para renombrar en NAME_DB.
+4. Crea una Base de Datos MySQL para asignar tus datos en `settings.py`.
 
 > ¡IMPORTANTE!
 > Poner DEBUG = False, ya que el modo debug revela información detallada.
