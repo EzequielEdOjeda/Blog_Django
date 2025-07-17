@@ -95,6 +95,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': NAME_DB,
         'USER': USER_DB,
+        # 'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'), 
+        # 'PASSWORD': 'MiPasswordDeMySQL',
+        # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
         'PASSWORD': PASSWORD_DB, 
         'PORT': "3306",
     }
