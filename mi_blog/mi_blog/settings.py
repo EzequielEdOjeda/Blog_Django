@@ -86,19 +86,15 @@ WSGI_APPLICATION = 'mi_blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-NAME_DB = os.getenv("NAME_DB")
-USER_DB = os.getenv("USER_DB")
-PASSWORD_DB = os.getenv("PASSWORD_DB") # Esta es la variable que guarda la contraseña de tu .env
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': NAME_DB,
-        'USER': USER_DB,
-        # 'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'), 
-        # 'PASSWORD': 'MiPasswordDeMySQL',
-        # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
-        'PASSWORD': PASSWORD_DB, 
+        'NAME': 'NAME_DB',
+      # 'NAME': os.environ.get('NAME_DB', 'NOMBREGITHUB$NAME_DB'), 
+        'USER': 'root',
+        'PASSWORD': 'root', 
+      # 'PASSWORD': 'PASSWORD_DB',
+      # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
         'PORT': "3306",
     }
 }
