@@ -19,6 +19,7 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
 
 ![Visitando](Capturas/Capture1.png)  
 ![Logeado](Capturas/Capture2.png) 
+![Jazzmin](Capturas/Capture3.png) 
 
 ---
 
@@ -110,8 +111,10 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
 
     application = StaticFilesHandler(get_wsgi_application())
     ```
+    
+4. Crea una Base de Datos MySQL y crea tu tabla para renombrar en NAME_DB.
 
-4. Configura en `settings.py`:
+5. Configura en `settings.py` con tus datos:
     ```python
     DEBUG = False
     ALLOWED_HOSTS = ['NOMBREGITHUB.pythonanywhere.com']
@@ -119,17 +122,18 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'),
-        'USER': USER_DB,
-        'PASSWORD': 'MiPasswordDeMySQL',
-        'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
+        'NAME': 'NAME_DB',
+      # 'NAME': os.environ.get('NAME_DB', 'NOMBREGITHUB$NAME_DB'), 
+        'USER': 'root',
+        'PASSWORD': 'root', 
+      # 'PASSWORD': 'PASSWORD_DB',
+      # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
         'PORT': "3306",
      }
-   } 
-	
-5. Configura Tu Base de Datos MySQL y en el archivo .env, y crea tu tabla "Datos_blog".
- 
-6. Aplica las migraciones de la base de datos y crea tu superusuario.
+   }
+   ```
+     
+6. Aplica las migraciones de la base de datos y crea tu superusuario desde la consola.
 
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
@@ -159,11 +163,11 @@ Dentro de tu cuenta de PythonAnywhere, aplica los siguientes ajustes:
 #### 🔐 Sección **Security**:
 - **Force HTTPS**: Activa esta opción (Enabled)
 
-#### 🛢️ Sección **Databases**:
-- Crea una base de datos MySQL y asigna una contraseña segura.
+### 🔁 Sección **Recargar**:
+- Haz clic en el **botón verde de recarga** para aplicar tus cambios.
 
-#### 🔁 Sección **Reload**:
-- Presiona el **botón verde de recarga** para aplicar los cambios y listo.
+### 🗂️ Gestión del **Panel de Administración**:
+- Crea tu grupo "Editors" para asignar editores. Por defecto, ya está disponible un grupo de "Comentaristas".
 
 ---
 
