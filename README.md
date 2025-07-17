@@ -115,9 +115,24 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     ```python
     DEBUG = False
     ALLOWED_HOSTS = ['NOMBREGITHUB.pythonanywhere.com']
+
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': NAME_DB,
+        'USER': USER_DB,
+        # 'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'), 
+        # 'PASSWORD': 'MiPasswordDeMySQL',
+        # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
+        'PASSWORD': PASSWORD_DB, 
+        'PORT': "3306",
+    }
+}
     ```
 	
-5. Configura el archivo .env con tus datos MySQL del sitio:
+5. Configura Tu Base de Datos MySQL y en el archivo .env, y crea tu tabla "Datos_blog".
+ 
+6. Aplica las migraciones de la base de datos y crea tu superusuario.
 
 > También puedes consultar este video guía:  
 > 🎥 [Instalación en PythonAnywhere](https://www.youtube.com/watch?v=M5ZQjVbtSa8)
