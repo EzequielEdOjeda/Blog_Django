@@ -127,8 +127,7 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
         'PASSWORD': PASSWORD_DB, 
         'PORT': "3306",
     }
-}
-    ```
+   } ```
 	
 5. Configura Tu Base de Datos MySQL y en el archivo .env, y crea tu tabla "Datos_blog".
  
