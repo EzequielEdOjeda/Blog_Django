@@ -51,7 +51,7 @@
                 <article class="card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden" style="box-shadow: 0 3px 15px rgba(239, 0, 0, 0.3);">
 				<div class="relative overflow-hidden">
                         {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full rounded-2xl h-52 object-cover transition-transform duration-500 group-hover:scale-110">
                         {% else %}
                             <div class="w-full h-52 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 flex items-center justify-center text-gray-400 dark:text-gray-600 text-6xl font-bold">
                                 <svg class="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
