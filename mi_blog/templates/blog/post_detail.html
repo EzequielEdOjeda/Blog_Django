@@ -39,7 +39,7 @@
                 {% for comment in comments %}
                     <div class="border-b border-blue-200 dark:border-gray-700 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
                         <p class="font-semibold text-grey-500 dark:text-blue-500">{{ comment.author.username }} <span class="text-green-500 dark:text-green-500 text-sm ml-2"><span>•</span>{{ comment.created|date:" d M Y, H:i " }}<span>•</span></span>
-                            {% if user.is_authenticated and user.is_superuser or user.is_authenticated and user.profile.is_editor and user == post.author %}
+                            {% if user.is_authenticated and user.is_superuser or user.is_authenticated and user.profile.is_editor or user.is_authenticated and user == comment.author %}
                                 <a href="{% url 'blog:comment_delete' comment.id %}" class="text-red-500 dark:text-red-400 text-sm ml-2 hover:underline">Eliminar</a>
                             {% endif %}
                         </p>
