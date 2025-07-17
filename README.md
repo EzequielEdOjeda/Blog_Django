@@ -119,12 +119,10 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': NAME_DB,
+        'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'),
         'USER': USER_DB,
-        # 'NAME': os.environ.get('DB_NAME', 'NOMBREGITHUB$Datos_blog'), 
-        # 'PASSWORD': 'MiPasswordDeMySQL',
-        # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
-        'PASSWORD': PASSWORD_DB, 
+        'PASSWORD': 'MiPasswordDeMySQL',
+        'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
         'PORT': "3306",
     }
    } ```
