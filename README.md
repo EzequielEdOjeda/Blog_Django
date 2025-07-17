@@ -46,7 +46,21 @@ Este repositorio contiene el proyecto desarrollado para el curso de Desarrollo W
     pip install -r requirements.txt
     ```
     
-5.  **Crea una Base de Datos MySQL para asignar tus datos en `settings.py`.**
+5.  **Crear una Base de Datos MySQL para asignar en `settings.py` tus datos:**
+    ```bash
+    DEBUG = True 
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] 
+    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'NAME_DB',, 
+            'USER': 'USER_DB',
+            'PASSWORD': 'PASSWORD_DB', 
+            'PORT': "3306",
+        }
+    }
+    ```
       
 6.  **Aplicar migraciones de la base de datos:**
     ```bash
@@ -130,9 +144,8 @@ Puedes instalar el proyecto en [PythonAnywhere](https://www.pythonanywhere.com/)
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'NAME_DB',
       # 'NAME': os.environ.get('NAME_DB', 'NOMBREGITHUB$NAME_DB'), 
-        'USER': 'root',
-        'PASSWORD': 'root', 
-      # 'PASSWORD': 'PASSWORD_DB',
+        'USER': 'USER_DB',
+        'PASSWORD': 'PASSWORD_DB', 
       # 'HOST': 'NOMBREGITHUB.mysql.pythonanywhere-services.com',
         'PORT': "3306",
      }
