@@ -6,11 +6,11 @@
 {% block content %}
 <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
     <div class="lg:col-span-3"> {# Contenido principal del post #}
-        <article class="card bg-white mb-8">
+        <article class="card bg-white mb-8 p-0">
             {% if post.featured_image %}
-                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-96 object-cover rounded-t-xl mb-6 shadow-md">
+                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-96 object-cover rounded-t-xl mb-1 shadow-md">
             {% endif %}
-            <div class="p-6">
+            <div class="p-3">
                 <h1 class="text-4xl font-extrabold text-blue-800 dark:text-blue-400 mb-4 leading-tight">{{ post.title }}</h1>
                 <p class="text-gray-500 dark:text-gray-500 text-sm mb-6 flex items-center space-x-3">
                     <span>Publicado por <span class="font-medium text-blue-500 dark:text-blue-500">{{ post.author.username }}</span></span>
